@@ -1,0 +1,125 @@
+//3주차 과제_DB 연동실습
+<!DOCTYPE html>
+<html>
+<h2> 아파치 웹서버에 DB연동 실습 </h2>
+<body>
+<?php
+$hostname = "127.0.0.1";
+$username= "root";
+$password = "0627";
+$dbname = "realuser_db";
+$mysqli = new mysqli($hostname, $username, $password, $dbname);
+
+if(mysqli_connect_errno()){
+    printf("재시도!");
+    exit();
+}else{
+    printf("(연결 성공)<br>");
+}
+
+
+
+print("Hello world!<br><br><br>");
+
+
+
+
+
+$important= "SELECT * FROM important";
+$link = "SELECT * FROM link";
+$payment = "SELECT * FROM payment";
+$user = "SELECT * FROM user";
+
+
+$result1=mysqli_query($mysqli,$user);
+
+print "[개인정보]<br>";
+print "uId &nbsp n_name &nbsp age &nbsp gender &nbsp max kg &nbsp F_Food &nbsp Now_kg<br>";
+
+while($return1=mysqli_fetch_array($result1)) {
+    echo $return1['uId'];
+    print "&nbsp  &nbsp&nbsp&nbsp ";
+
+    echo $return1['n_name'];
+    print "&nbsp  &nbsp  &nbsp&nbsp";
+
+    echo $return1['age'];
+    print "&nbsp  &nbsp   &nbsp &nbsp&nbsp";
+
+    echo $return1['gender'];
+    print "&nbsp  &nbsp &nbsp&nbsp&nbsp&nbsp ";
+
+    echo $return1['max_kg'];
+    print "&nbsp  &nbsp &nbsp&nbsp&nbsp ";
+    
+    echo $return1['F_food'];
+    print "&nbsp  &nbsp &nbsp &nbsp ";
+
+    echo $return1['Now_kg'];
+    print "<br>";
+
+}
+
+print "<br><br><br>";
+$result2=mysqli_query($mysqli,$important);
+
+
+print "[회원별 ID와 비번]<br>";
+print "uId &nbsp n_name &nbsp Pass <br>";
+while($return2=mysqli_fetch_array($result2)){
+    echo $return2['uId'];
+    print "&nbsp   &nbsp   &nbsp";
+
+    echo $return2['n_name'];
+    print "&nbsp   &nbsp  &nbsp  &nbsp";
+
+    echo $return2['Pass'];
+    print "<br>";
+}
+
+print "<br><br><br>";
+$result3=mysqli_query($mysqli,$payment);
+
+
+print "[중요 결제정보]<br>";
+print "uId &nbsp n_name &nbsp R_name &nbsp Account &nbsp P_number <br>";
+while($return3=mysqli_fetch_array($result3)){
+    echo $return2['uId'];
+
+    echo $return3['n_name'];
+    print "&nbsp   &nbsp  &nbsp  &nbsp";
+
+    echo $return3['R_name'];
+    print "&nbsp   &nbsp   &nbsp";
+
+    echo $return3['Account'];
+    print "&nbsp   &nbsp  &nbsp  &nbsp";
+
+    echo $return3['P_number'];
+    print "<br>";
+}
+
+
+print "<br><br><br>";
+$result4=mysqli_query($mysqli,$link);
+
+
+print "[음식별 구매링크]<br>";
+print "FId &nbsp F_food &nbsp Link <br>";
+while($return4=mysqli_fetch_array($result4)){
+    echo $return4['FId'];
+    print "&nbsp   &nbsp   &nbsp";
+
+    echo $return4['F_food'];
+    print "&nbsp   &nbsp  &nbsp  &nbsp";
+
+    echo $return4['Link'];
+    print "<br>";
+}
+
+
+
+?>
+
+</body>
+</html>

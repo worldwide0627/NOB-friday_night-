@@ -1,0 +1,80 @@
+//2주차 과제_DB 생성
+CREATE DATABASE realuser_db;
+use realuser_db;
+
+//Table 생성
+
+//1) 개인정보 (Table명: User) table 생성
+
+CREATE TABLE User (
+  uId INTEGER PRIMARY KEY,
+  n_name TEXT NOT NULL,
+  age INTEGER,
+  gender TEXT NOT NULL,
+  max_kg INTEGER,
+  F_food TEXT NOT NULL,
+  Now_kg INTEGER );
+
+INSERT INTO User VALUES (1, 'Cla', 17, 'M',150, 'Chicken', 70);
+INSERT INTO User VALUES (2, 'An', 22,'W',80, 'Pizza', 55);
+INSERT INTO User VALUES (3, 'Lea', 43, 'W',80,'Soup', 45);
+INSERT INTO User VALUES (4, 'Ak', 49, 'M',150, 'Noodle', 90);
+INSERT INTO User VALUES (5, 'Ell', 59,'W',80, 'Berger', 84);
+INSERT INTO User VALUES (6, 'Jak', 38, 'M',150,'Chicken', 120);
+INSERT INTO User VALUES (7, 'AR', 46, 'M',150, 'Soup', 155);
+INSERT INTO User VALUES (8, 'Jo', 23,'W',80, 'Berger', 82);
+INSERT INTO User VALUES (9, 'D', 15, 'M',150,'Soup', 110);
+
+
+
+//2) 회원 아이디와 비번 (Table명: Important) table 생성
+
+CREATE TABLE Important (
+  uId INTEGER PRIMARY KEY,
+  n_name TEXT NOT NULL,
+  Pass TEXT NOT NULL);
+
+INSERT INTO Important VALUES (1, 'Cla', 'As2949');
+INSERT INTO Important VALUES (2, 'An', 'We3950');
+INSERT INTO Important VALUES (3, 'Lea', 'Qm3049');
+INSERT INTO Important VALUES (4, 'Ak', 'Re4949');
+INSERT INTO Important VALUES (5, 'Ell', 'Nk3032');
+INSERT INTO Important VALUES (6, 'Jak', 'Mc0393');
+INSERT INTO Important VALUES (7, 'AR', 'Ir2049');
+INSERT INTO Important VALUES (8, 'Jo', 'Um3049');
+INSERT INTO Important VALUES (9, 'D', 'Cv3939');
+
+
+//3) 중요 결제정보 (Table명: Payment) table 생성
+
+CREATE TABLE Payment (
+  uId INTEGER PRIMARY KEY,
+  n_name TEXT NOT NULL,
+  R_name TEXT NOT NULL,
+  Account TEXT NOT NULL,
+  P_number TEXT NOT NULL);
+
+INSERT INTO Payment VALUES (1, 'Cla', 'Clark','394-55-284823','010-3928-5848');
+INSERT INTO Payment VALUES (2, 'An', 'Anna','584-24-584848','010-4858-1928');
+INSERT INTO Payment VALUES (3, 'Lea', 'Lean','696-37-689559','010-3534-2764');
+INSERT INTO Payment VALUES (4, 'Ak', 'Akdan','396-69-248594','010-4859-2938');
+INSERT INTO Payment VALUES (5, 'Ell', 'Ellern','609-89-396869','010-3749-5959');
+INSERT INTO Payment VALUES (6, 'Jak', 'Jake','203-79-595955','010-5868-2473');
+INSERT INTO Payment VALUES (7, 'AR', 'ARR','697-97-283845','010-5489-2849');
+INSERT INTO Payment VALUES (8, 'Jo', 'Joe','065-97-485848','010-6868-3625');
+INSERT INTO Payment VALUES (9, 'D', 'Den','234-45-386868','010-5854-2838');
+
+
+//4) 음식별 구매링크 (Table명: Link) table 생성
+
+CREATE TABLE Link (
+  FId INTEGER PRIMARY KEY,
+  F_food TEXT NOT NULL,
+  Link TEXT NOT NULL);
+
+INSERT INTO Link VALUES (1, 'Chicken', 'https://search.shopping.naver.com/search/all?where=all&frm=NVSCTAB&query=%EC%B9%98%ED%82%A8');
+INSERT INTO Link VALUES (2, 'Pizza', 'https://search.shopping.naver.com/search/all?query=%ED%94%BC%EC%9E%90&frm=NVSHATC&prevQuery=%EC%B9%98%ED%82%A8');
+INSERT INTO Link VALUES (3, 'Soup', 'https://search.shopping.naver.com/search/all?query=%EC%8A%A4%ED%94%84&frm=NVSHATC&prevQuery=%ED%94%BC%EC%9E%90');
+INSERT INTO Link VALUES (4, 'Noodle', 'https://search.shopping.naver.com/search/all?query=%EB%88%84%EB%93%A4&frm=NVSHATC&prevQuery=%EB%A9%B4');
+INSERT INTO Link VALUES (5, 'Berger', 'https://search.shopping.naver.com/search/all?query=%ED%96%84%EB%B2%84%EA%B1%B0&frm=NVSHATC&prevQuery=%EC%8A%A4%ED%94%84');
+INSERT INTO Link VALUES (6, 'Vegetable', 'https://search.shopping.naver.com/search/all?query=%EC%B1%84%EC%86%8C&frm=NVSHATC&prevQuery=%EB%88%84%EB%93%A4');
